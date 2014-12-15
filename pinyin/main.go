@@ -19,9 +19,4 @@ func main() {
   }
 
   println(pinyin.T(str, splitter))
-
-  var py pinyin.Pinyin
-
-  py.Init()
-
 }

@@ -1,9 +1,13 @@
 package pinyin
 
 import (
-  "log"
-  "os"
+  "strings"
+  // "regexp"
 )
+
+// var hzRegexp = regexp.MustCompile("^[\u4e00-\u9fa5]$")
+
+var dict = map[string]string{}
 
 // Translate chinese to pinyin
 func T(args ...string) string {
@@ -25,23 +29,12 @@ func T(args ...string) string {
 }
 
 
-type Pinyin struct {
+func init() {
 
-  initialized bool
-}
+  for _, line := range strings.Split(dictDate, "\n") {
 
+    var words = strings.SplitN(line, " ", 2)
 
-func (py *Pinyin) Init() {
-  if py.initialized {
-    log.Fatal("Initialization can not be repeated!")
+    dict[words[0]] = words[1]
   }
-
-  py.initialized = true
-
-  file, err := os.Open("data/pinyin-utf8.dat")
-  defer file.Close()
-  if err != nil {
-    log.Fatal(err)
-  }
-
 }
