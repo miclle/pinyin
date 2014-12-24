@@ -3,6 +3,7 @@ package main
 import (
   "os"
   "strings"
+  "fmt"
   "pinyin"
 )
 
@@ -18,5 +19,5 @@ func main() {
     splitter = os.Args[len(os.Args)-1]
   }
 
-  println(pinyin.T(str, splitter))
+  fmt.Print(pinyin.T(str, splitter))
 }
