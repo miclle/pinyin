@@ -1,4 +1,4 @@
-package pinyin
+package main
 
 import (
   "strings"
@@ -11,10 +11,12 @@ var dict = map[string]string{}
 
 // Translate chinese to pinyin
 func T(args ...string) string {
-  pyStr, splitter, argsLen := "", " ", len(args)
+  splitter, argsLen := " ", len(args)
+
+  var fslice = []string{}
 
   if argsLen == 0 {
-    return pyStr
+    return ""
   }
 
   if argsLen > 1 {
@@ -22,10 +24,10 @@ func T(args ...string) string {
   }
 
   for _, rune := range args[0] {
-    pyStr += string(rune) + splitter
+    fslice = append(fslice, string(rune))
   }
 
-  return pyStr
+  return strings.Join(fslice, splitter)
 }
 
 
@@ -33,7 +35,7 @@ func init() {
 
   for _, line := range strings.Split(dictDate, "\n") {
 
-    var words = strings.SplitN(line, " ", 2)
+    var words = strings.SplitN(line, "\t", 2)
 
     dict[words[0]] = words[1]
   }
