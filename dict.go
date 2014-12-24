@@ -1,5 +1,39 @@
 package pinyin
 
+
+var tones map[string]string = map[string]string{
+  "ā": "a",
+  "á": "a",
+  "ǎ": "a",
+  "à": "a",
+
+  "ē": "e",
+  "é": "e",
+  "ě": "e",
+  "è": "e",
+
+  "ī": "i",
+  "í": "i",
+  "ǐ": "i",
+  "ì": "i",
+
+  "ō": "o",
+  "ó": "o",
+  "ǒ": "o",
+  "ò": "o",
+
+  "ū": "u",
+  "ú": "u",
+  "ǔ": "u",
+  "ù": "u",
+
+  "ǖ": "v",
+  "ǘ": "v",
+  "ǚ": "v",
+  "ǜ": "v",
+}
+
+
 var PinyinDict map[string]string = map[string]string{
 	"㐀": "qiū",
 	"㐁": "tiǎn,tiàn",
