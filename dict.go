@@ -25,7 +25,7 @@ var PinyinDict map[string]string = map[string]string{
 	"㐘": "mǐ",
 	"㐙": "dòu",
 	"㐚": "wú",
-	"㐛": "yòu ㄧ",
+	"㐛": "yòu",
 	"㐜": "chóu",
 	"㐝": "jū",
 	"㐞": "qí",
