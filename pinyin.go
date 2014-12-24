@@ -3,12 +3,25 @@ package pinyin
 import (
   "strings"
   "regexp"
+  "unicode/utf8"
 )
+
 
 var hzRegexp = regexp.MustCompile("^[\u4e00-\u9fa5]$")
 
+
 // Translate chinese to pinyin
 func T(args ...string) string {
+  return translate(args, false)
+}
+
+
+func TT(args ...string) string {
+  return translate(args, true)
+}
+
+
+func translate(args []string, tone bool) string {
 
   splitter, argsLen := " ", len(args)
 
@@ -37,7 +50,9 @@ func T(args ...string) string {
         fslice = append(fslice, non)
         non = ""
       }
-      fslice = append(fslice, strings.Split(PinyinDict[str], ",")[0])
+
+      fslice = append(fslice, spell(str, tone))
+
     }else{
       non += str
     }
@@ -48,4 +63,31 @@ func T(args ...string) string {
   }
 
   return strings.Join(fslice, splitter)
+}
+
+
+func spell(str string, tone bool) string {
+
+  spell := strings.Split(PinyinDict[str], ",")[0]
+
+  if tone {
+    return spell
+  }
+
+  output := make([]string, utf8.RuneCountInString(spell))
+
+  count := 0
+
+  for _, tone := range spell {
+    neutral, found := tones[string(tone)]
+    if found {
+      output[count] = neutral
+    } else {
+      output[count] = string(tone)
+    }
+    count++
+  }
+
+  return strings.Join(output, "")
+
 }
