@@ -1,6 +1,9 @@
 Pinyin
 =============
 
+[![Coverage Status](https://coveralls.io/repos/github/miclle/pinyin/badge.svg?branch=master)](https://coveralls.io/github/miclle/pinyin?branch=master)
+
+
 Translate chinese hanzi to pinyin.
 
 Install
