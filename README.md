@@ -30,7 +30,7 @@ func main() {
 
     fmt.Print(pinyin.TT("中国人"))
 
-    fmt.Print(pinyin.TT("中国人", "-"))}
+    fmt.Print(pinyin.TT("中国人", "-"))
 }
 ```
 
